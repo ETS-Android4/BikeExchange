@@ -58,8 +58,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.purchase:
                 fragment = new PurchaseFragment();
                 break;
-            default:
-                ;
+
         }
 
         if (fragment != null) {

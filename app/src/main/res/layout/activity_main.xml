@@ -18,6 +18,27 @@
             android:id="@+id/toolbar" />
 
         <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <EditText
+                android:id="@+id/search_bike"
+                android:inputType="text"
+                android:layout_width="310dp"
+                android:layout_height="wrap_content"
+                android:hint="@string/search_hint"
+                android:autofillHints="enter bike"/>
+
+            <Button
+                android:id="@+id/search_button"
+                android:layout_width="wrap_content"
+                android:layout_height="45dp"
+                android:layout_gravity="end"
+                android:text="@string/search_button" />
+
+        </FrameLayout>
+
+        <FrameLayout
             android:id="@+id/content_frame"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
