@@ -4,7 +4,10 @@
     <string name="messages">MESSAGES</string>
     <string name="my_shop">MY SHOP</string>
     <string name="purchase">PURCHASE</string>
-    <string name="log_in">Log In</string>
+    <string name="categories">CATEGORIES</string>
+    <string name="discounts">DISCOUNTS</string>
+    <string name="settings">SETTINGS</string>
+    <string name="log_in">Sign In</string>
     <string name="sign_up">Sign Up</string>
     <string name="nav_open_drawer">Open navigation</string>
     <string name="nav_close_drawer">Close navigation</string>
