@@ -1,39 +1,40 @@
-package com.hfad.bikeexchange;
+package com.hfad.bikeexchange.adapters;
 
 import android.graphics.drawable.Drawable;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.cardview.widget.CardView;
 
-class CaptionedImagesAdapter extends
+import com.hfad.bikeexchange.R;
+
+public class CaptionedImagesAdapter extends
     RecyclerView.Adapter<CaptionedImagesAdapter.ViewHolder> {
 
     private String[] captions;
     private int[] imageIds;
     private Listener listener;
 
-    interface Listener {
+    public CaptionedImagesAdapter (String[] captions, int[] imageIds) {
+        this.captions = captions;
+        this.imageIds = imageIds;
+    }
+
+    public interface Listener {
         void onClick(int position);
     }
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        private CardView cardView;
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {    // define the view
+        private CardView cardView;                                      // in RecyclerView
 
         public ViewHolder (CardView view) {
             super(view);
             cardView = view;
         }
-    }
-
-    public CaptionedImagesAdapter (String[] captions, int[] imageIds) {
-        this.captions = captions;
-        this.imageIds = imageIds;
     }
 
     @Override
@@ -47,7 +48,7 @@ class CaptionedImagesAdapter extends
 
     @Override
     public CaptionedImagesAdapter.ViewHolder onCreateViewHolder(
-            ViewGroup parent, int viewType) {
+            ViewGroup parent, int viewType) {       // first par: parent object
         CardView cv = (CardView) LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.card_captioned_image, parent, false);
         return new ViewHolder(cv);
@@ -61,6 +62,7 @@ class CaptionedImagesAdapter extends
                 ContextCompat.getDrawable(cardView.getContext(), imageIds[position]);
         imageView.setImageDrawable(drawable);
         imageView.setContentDescription(captions[position]);
+
         TextView textView = (TextView) cardView.findViewById(R.id.info_text);
         textView.setText(captions[position]);
 

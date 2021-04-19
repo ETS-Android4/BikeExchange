@@ -9,6 +9,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.hfad.bikeexchange.adapters.CaptionedImagesAdapter;
+import com.hfad.bikeexchange.models.Bike;
+
 public class HomePageFragment extends Fragment {
 
     @Override

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "369195334850",
+    "project_id": "bikeexchange-7fd54",
+    "storage_bucket": "bikeexchange-7fd54.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369195334850:android:05882c587b1fe9186ccf5b",
+        "android_client_info": {
+          "package_name": "com.hfad.bikeexchange"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "369195334850-1jergrffqevnbet7kskp2n2vjccqacf4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsQYEC1VqmPfD7mqU873HJjvUisfHEkEI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "369195334850-1jergrffqevnbet7kskp2n2vjccqacf4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

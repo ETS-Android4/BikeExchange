@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity
                 R.string.nav_open_drawer,
                 R.string.nav_close_drawer);
 
+        toggle.getDrawerArrowDrawable().setColor(getResources().getColor(R.color.grey));
+
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 

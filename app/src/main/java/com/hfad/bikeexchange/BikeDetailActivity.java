@@ -9,6 +9,8 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.hfad.bikeexchange.models.Bike;
+
 public class BikeDetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_BIKE_ID = "bikeId";
