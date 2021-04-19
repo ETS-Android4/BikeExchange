@@ -46,9 +46,6 @@ public class MainActivity extends AppCompatActivity
         Intent intent = null;
 
         switch (id) {
-            case R.id.nav_home:
-                fragment = new HomePageFragment();
-                break;
             case R.id.messages:
                 fragment = new MessagesFragment();
                 break;
@@ -58,7 +55,8 @@ public class MainActivity extends AppCompatActivity
             case R.id.purchase:
                 fragment = new PurchaseFragment();
                 break;
-
+            default:
+                fragment = new HomePageFragment();
         }
 
         if (fragment != null) {
