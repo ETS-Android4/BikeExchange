@@ -4,7 +4,7 @@ import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -33,6 +33,16 @@ public class HomePageFragment extends Fragment {
         bikeRecycler.setAdapter(adapter);
         GridLayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
         bikeRecycler.setLayoutManager(layoutManager);
+
+        adapter.setListener(new CaptionedImagesAdapter.Listener() {
+            @Override
+            public void onClick(int position) {
+                Intent intent = new Intent(getActivity(), BikeDetailActivity.class);
+                intent.putExtra(BikeDetailActivity.EXTRA_BIKE_ID, position);
+                getActivity().startActivity(intent);
+            }
+        });
+
         return bikeRecycler;
     }
 }
