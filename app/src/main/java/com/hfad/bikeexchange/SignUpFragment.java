@@ -2,6 +2,7 @@ package com.hfad.bikeexchange;
 
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -38,7 +39,7 @@ public class SignUpFragment extends Fragment {
     private FrameLayout parentFrameLayout;
     private EditText email, password, confirmPassword;
     private ImageButton closeBtn;
-    //private ProgressBar progressBar;
+    private ProgressBar progressBar;
     private FirebaseAuth firebaseAuth;
     private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+.[a-z]+";
 
@@ -57,6 +58,8 @@ public class SignUpFragment extends Fragment {
 
         closeBtn = view.findViewById(R.id.sign_up_close_button);
         signUpBtn = view.findViewById(R.id.button_sign_up);
+
+        progressBar = view.findViewById(R.id.sign_up_progressBar);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -90,6 +93,7 @@ public class SignUpFragment extends Fragment {
 
             }
         });
+
         password.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -106,6 +110,7 @@ public class SignUpFragment extends Fragment {
 
             }
         });
+
         confirmPassword.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -146,19 +151,22 @@ public class SignUpFragment extends Fragment {
                 !TextUtils.isEmpty(confirmPassword.getText()) &&
                 password.length() >= 8 ) {
             signUpBtn.setEnabled(true);
-            signUpBtn.setTextColor(getResources().getColor(R.color.teal_200));
+            signUpBtn.setTextColor(getResources().getColor(R.color.teal_700));
         } else {
             signUpBtn.setEnabled(false);
-            signUpBtn.setTextColor(getResources().getColor(R.color.red));
+            signUpBtn.setTextColor(getResources().getColor(R.color.design_default_color_error));
         }
     }
 
     private void checkEmailAndPassword() {
         if (email.getText().toString().matches(emailPattern) &&
-                password.getText().equals(confirmPassword.getText())) {
+                password.getText().toString().equals(confirmPassword.getText().toString())) {
+
+            progressBar.setVisibility(View.VISIBLE);
 
             signUpBtn.setEnabled(false);
-            signUpBtn.setTextColor(getResources().getColor(R.color.red));
+            signUpBtn.setTextColor(getResources().getColor(R.color.design_default_color_error));
+
 
             firebaseAuth.createUserWithEmailAndPassword(email.getText().toString(),
                     password.getText().toString())
@@ -170,8 +178,11 @@ public class SignUpFragment extends Fragment {
                                 startActivity(mainIntent);
                                 getActivity().finish();
                             } else {
+                                progressBar.setVisibility(View.INVISIBLE);
+
                                 signUpBtn.setEnabled(true);
-                                signUpBtn.setTextColor(getResources().getColor(R.color.teal_200));
+                                signUpBtn.setTextColor(getResources().getColor(R.color.teal_700));
+
                                 String error = task.getException().getMessage();
                                 Toast.makeText(getActivity(), "error", Toast.LENGTH_SHORT).show();
                             }
