@@ -17,6 +17,7 @@
     <string name="logo">Logo</string>
     <string name="close">Close button</string>
     <string name="email_hint">Enter email</string>
+    <string name="username_hint">Enter name</string>
     <string name="passw_hint">Enter password</string>
     <string name="forgot_passw">I forgot password</string>
     <string name="confirm_passw">Confirm password</string>

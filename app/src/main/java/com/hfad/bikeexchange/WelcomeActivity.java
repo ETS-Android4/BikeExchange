@@ -14,7 +14,7 @@ public class WelcomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-        SystemClock.sleep(3000);
+        SystemClock.sleep(1500);
         Intent registerIntent = new Intent(this, RegisterActivity.class);
         startActivity(registerIntent);
         finish();
