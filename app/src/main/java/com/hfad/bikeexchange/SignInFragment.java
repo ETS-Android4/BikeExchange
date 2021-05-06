@@ -19,6 +19,7 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -26,6 +27,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+import static com.hfad.bikeexchange.RegisterActivity.onResetPasswordFragment;
 
 public class SignInFragment extends Fragment {
     public SignInFragment() { }
@@ -36,6 +38,7 @@ public class SignInFragment extends Fragment {
     private EditText email, password;
     private ProgressBar progressBar;
     private FirebaseAuth firebaseAuth;
+    private TextView forgotPassword;
     private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+.[a-z]+";
 
     @Override
@@ -51,6 +54,7 @@ public class SignInFragment extends Fragment {
 
         closeButton = view.findViewById(R.id.sign_in_close_button);
         signInButton = view.findViewById(R.id.button_sign_in);
+        forgotPassword = view.findViewById(R.id.forgot_passw_textView);
         progressBar = view.findViewById(R.id.sign_in_progressBar);
 
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
@@ -94,6 +98,13 @@ public class SignInFragment extends Fragment {
             public void afterTextChanged(Editable s) {
 
             }
+        });
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onResetPasswordFragment = true;
+                setFragment(new ResetPasswordFragment()); }
         });
 
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -169,7 +180,7 @@ public class SignInFragment extends Fragment {
 
     private void showError(Task task) {
         String error = task.getException().getMessage();
-        Toast.makeText(getActivity(), "Something wrong", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
     }
 
     private void CreateMainActivityIntent() {

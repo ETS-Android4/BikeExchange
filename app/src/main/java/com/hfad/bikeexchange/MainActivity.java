@@ -11,18 +11,25 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.FrameLayout;
 
 import com.google.android.material.navigation.NavigationView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private FrameLayout frameLayout;
+    private NavigationView navigationView;
+    private View headerLay;
+    private Button signIn, signUp;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
-
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -38,8 +45,30 @@ public class MainActivity extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        headerLay = navigationView.getHeaderView(0);
+        signIn = headerLay.findViewById(R.id.sign_in_nav_btn);
+        signIn.setOnClickListener(v -> createRegisterActivityIntent());
+
+        signUp = headerLay.findViewById(R.id.sign_up_nav_btn);
+        signUp.setOnClickListener(v -> createRegisterActivityIntent());
+
+        frameLayout = findViewById(R.id.content_frame);
+        setFragment(new HomePageFragment());
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        int id = menuItem.getItemId();
+
+        if (id == R.id.search_bar)
+            return true;
+        else if (id == R.id.cart)
+            return true;
+
+        return super.onOptionsItemSelected(menuItem);
     }
 
     @Override
@@ -48,19 +77,15 @@ public class MainActivity extends AppCompatActivity
         Fragment fragment = null;
         Intent intent = null;
 
-        switch (id) {
-            case R.id.messages:
-                fragment = new MessagesFragment();
-                break;
-            case R.id.my_shop:
-                fragment = new MyShopFragment();
-                break;
-            case R.id.purchase:
-                fragment = new PurchaseFragment();
-                break;
-            default:
-                fragment = new HomePageFragment();
-        }
+        if (id == R.id.nav_home)
+            fragment = new HomePageFragment();
+        else if (id == R.id.messages)
+            fragment = new MessagesFragment();
+        else if (id == R.id.my_shop)
+            fragment = new MyShopFragment();
+        else if (id == R.id.purchase)
+            fragment = new PurchaseFragment();
+
 
         if (fragment != null) {
             FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
@@ -87,8 +112,21 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.shopping_cart, menu);
+        getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
+    }
+
+    private void setFragment(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(frameLayout.getId(), fragment);
+        fragmentTransaction.commit();
+    }
+
+    private void createRegisterActivityIntent() {
+        Intent registerIntent = new Intent(this, RegisterActivity.class);
+        // Fragment fragment = getFragmentManager().getFragment(R.id.si)
+        startActivity(registerIntent);
+        this.finish();
     }
 }
 

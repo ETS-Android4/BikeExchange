@@ -219,7 +219,8 @@ public class SignUpFragment extends Fragment {
     }
 
     private void showError(Task task) {
-        Toast.makeText(getActivity(), "error", Toast.LENGTH_SHORT).show();
+        String error = task.getException().toString();
+        Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
     }
 
     private void CreateMainActivityIntent() {

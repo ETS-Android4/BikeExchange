@@ -5,11 +5,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.widget.FrameLayout;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private FrameLayout frameLayout;
+    public static boolean onResetPasswordFragment = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +20,16 @@ public class RegisterActivity extends AppCompatActivity {
 
         frameLayout = findViewById(R.id.register_frameLayout);
         setFragment(new SignInFragment());
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && onResetPasswordFragment) {
+            onResetPasswordFragment = false;
+            setFragment(new SignInFragment());
+            return false;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     private void setFragment(Fragment fragment) {

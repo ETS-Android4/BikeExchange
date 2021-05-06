@@ -9,10 +9,12 @@
     <string name="settings">SETTINGS</string>
     <string name="sign_in">SIGN IN</string>
     <string name="sign_up">SIGN UP</string>
+    <string name="sign_out">SIGN OUT</string>
     <string name="nav_open_drawer">Open navigation</string>
     <string name="nav_close_drawer">Close navigation</string>
     <string name="search_hint">Search bike</string>
     <string name="search_button">Search</string>
+    <string name="search_icon">Search</string>
     <string name="shopping_cart">Shopping Cart</string>
     <string name="logo">Logo</string>
     <string name="close">Close button</string>
@@ -23,6 +25,10 @@
     <string name="confirm_passw">Confirm password</string>
     <string name="have_not_acc">Not have an account yet?</string>
     <string name="have_acc">Already have an account?</string>
+    <string name="reset_password_first_line">To reset password enter your email</string>
+    <string name="reset_password_second_line">We will send a letter with further instructions</string>
+    <string name="reset_passw_btn">RESET</string>
+    <string name="send_reset_email_info">Successfully. Check your inbox</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
