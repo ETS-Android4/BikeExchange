@@ -5,20 +5,28 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:logo="@drawable/bike_exchange_logo_mini_2"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/AppTheme"
+        android:fullBackupOnly="true"
+        android:allowBackup="true">
+
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-8953140986335556~8008525640"/>
+
         <activity
             android:name=".RegisterActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="fullSensor">
         </activity>
+
         <activity
             android:name=".WelcomeActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/WelcomeTheme">
+            android:screenOrientation="fullSensor"
+            android:theme="@style/WelcomeTheme"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -30,8 +38,7 @@
             android:parentActivityName=".MainActivity">
         </activity>
         <activity android:name=".MainActivity">
-
         </activity>
-    </application>
 
+    </application>
 </manifest>

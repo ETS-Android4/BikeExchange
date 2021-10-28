@@ -1,13 +1,9 @@
 package com.hfad.bikeexchange;
 
+import static com.hfad.bikeexchange.RegisterActivity.onResetPasswordFragment;
+
 import android.content.Intent;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -22,12 +18,17 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-import static com.hfad.bikeexchange.RegisterActivity.onResetPasswordFragment;
+import java.util.Objects;
 
 public class SignInFragment extends Fragment {
     public SignInFragment() { }
@@ -39,14 +40,13 @@ public class SignInFragment extends Fragment {
     private ProgressBar progressBar;
     private FirebaseAuth firebaseAuth;
     private TextView forgotPassword;
-    private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+.[a-z]+";
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sign_in, container, false);
-        parentFrameLayout = getActivity().findViewById(R.id.register_frameLayout);
+        parentFrameLayout = requireActivity().findViewById(R.id.register_frameLayout);
         dontHaveAnAccount = view.findViewById(R.id.button_sign_up);
 
         email = view.findViewById(R.id.sign_in_email);
@@ -57,7 +57,7 @@ public class SignInFragment extends Fragment {
         forgotPassword = view.findViewById(R.id.forgot_passw_textView);
         progressBar = view.findViewById(R.id.sign_in_progressBar);
 
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth = FirebaseAuth.getInstance();
 
         return view;
     }
@@ -124,7 +124,7 @@ public class SignInFragment extends Fragment {
     }
 
     private void setFragment(Fragment fragment) {
-        FragmentTransaction fragmentTransaction = getActivity()
+        FragmentTransaction fragmentTransaction = requireActivity()
                 .getSupportFragmentManager()
                 .beginTransaction();
 
@@ -142,6 +142,8 @@ public class SignInFragment extends Fragment {
     }
 
     private void CheckEmailAndPassword() {
+        final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+.[a-z]+";
+
         if (email.getText().toString().matches(emailPattern) &&
                 password.length() >= 8) {
 
@@ -156,7 +158,7 @@ public class SignInFragment extends Fragment {
                             if (task.isSuccessful()){
                                 Intent mainIntent = new Intent(getActivity(), MainActivity.class);
                                 startActivity(mainIntent);
-                                getActivity().finish();
+                                requireActivity().finish();
                             } else {
                                 showError(task);
                                 progressBar.setVisibility(View.INVISIBLE);
@@ -179,13 +181,13 @@ public class SignInFragment extends Fragment {
     }
 
     private void showError(Task task) {
-        String error = task.getException().getMessage();
+        String error = Objects.requireNonNull(task.getException()).getMessage();
         Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
     }
 
     private void CreateMainActivityIntent() {
         Intent mainIntent = new Intent(getActivity(), MainActivity.class);
         startActivity(mainIntent);
-        getActivity().finish();
+        requireActivity().finish();
     }
 }

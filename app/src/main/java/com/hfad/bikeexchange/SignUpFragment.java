@@ -1,15 +1,7 @@
 package com.hfad.bikeexchange;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -23,18 +15,18 @@ import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.HashMap;
-import java.util.Map;
-
-import static android.graphics.Color.*;
+import com.hfad.bikeexchange.models.Customer;
 
 public class SignUpFragment extends Fragment {
 
@@ -42,7 +34,7 @@ public class SignUpFragment extends Fragment {
 
     private Button alreadyHaveAnAccount, signUpBtn;
     private FrameLayout parentFrameLayout;
-    private EditText email, password, confirmPassword, username;
+    private EditText email, password, confirmPassword, firstName, secondName;
     private ImageButton closeBtn;
     private ProgressBar progressBar;
     private FirebaseAuth firebaseAuth;
@@ -58,7 +50,9 @@ public class SignUpFragment extends Fragment {
         alreadyHaveAnAccount = view.findViewById(R.id.button_sign_in);
 
         email = view.findViewById(R.id.sign_up_email);
-        username = view.findViewById(R.id.sign_up_username);
+        firstName = view.findViewById(R.id.sign_up_first_name);
+        secondName = view.findViewById(R.id.sign_up_second_name);
+
         password = view.findViewById(R.id.sign_up_password);
         confirmPassword = view.findViewById(R.id.sign_up_confirm_password);
 
@@ -170,7 +164,6 @@ public class SignUpFragment extends Fragment {
         if (email.getText().toString().matches(emailPattern) &&
                 password.getText().toString().equals(confirmPassword.getText().toString())) {
 
-            progressBar.setVisibility(View.VISIBLE);
             BtnSignUpDisable();
 
             firebaseAuth.createUserWithEmailAndPassword(email.getText().toString(),
@@ -179,25 +172,25 @@ public class SignUpFragment extends Fragment {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Map<Object, String> userData = new HashMap<>();
-                                userData.put("username", username.getText().toString());
+                                Customer customer = new Customer(
+                                        email.getText().toString(),
+                                        firstName.getText().toString(),
+                                        secondName.getText().toString());
 
-                                firebaseFirestore.collection("USERS")
-                                        .add(userData)
+                                firebaseFirestore.collection("CUSTOMERS")
+                                        .add(customer)
                                         .addOnCompleteListener(new OnCompleteListener<DocumentReference>() {
                                             @Override
                                             public void onComplete(@NonNull Task<DocumentReference> task) {
                                                 if (task.isSuccessful()) {
                                                     CreateMainActivityIntent();
                                                 } else {
-                                                    progressBar.setVisibility(View.INVISIBLE);
                                                     BtnSignUpEnable();
                                                     showError(task);
                                                 }
                                             }
                                         });
                             } else {
-                                progressBar.setVisibility(View.INVISIBLE);
                                 BtnSignUpEnable();
                                 showError(task);
                             }

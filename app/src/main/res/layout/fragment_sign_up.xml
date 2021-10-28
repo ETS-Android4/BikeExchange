@@ -48,32 +48,49 @@
             android:autofillHints="@string/email_hint"
             android:backgroundTint="@color/grey"
             android:ems="10"
+            android:hint="@string/email_hint"
             android:inputType="textEmailAddress"
             android:textColor="@color/grey"
-            android:hint="@string/email_hint"
             android:textColorHint="@color/grey"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
         <EditText
-            android:id="@+id/sign_up_username"
+            android:id="@+id/sign_up_first_name"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginEnd="20dp"
             android:layout_marginRight="20dp"
-            android:autofillHints="@string/email_hint"
+            android:autofillHints="@string/secondName_hint"
             android:backgroundTint="@color/grey"
             android:ems="10"
-            android:hint="@string/username_hint"
+            android:hint="@string/secondName_hint"
             android:inputType="textPersonName"
             android:textColor="@color/grey"
             android:textColorHint="@color/grey"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sign_up_second_name" />
+
+        <EditText
+            android:id="@+id/sign_up_second_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginRight="20dp"
+            android:autofillHints="@string/firstName_hint"
+            android:backgroundTint="@color/grey"
+            android:ems="10"
+            android:hint="@string/firstName_hint"
+            android:inputType="textPersonName"
+            android:textColor="@color/grey"
+            android:textColorHint="@color/grey"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sign_up_email" />
 
@@ -93,9 +110,8 @@
             android:textColor="@color/grey"
             android:textColorHint="@color/grey"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sign_up_username" />
+            app:layout_constraintTop_toBottomOf="@+id/sign_up_first_name" />
 
         <EditText
             android:id="@+id/sign_up_confirm_password"
@@ -107,12 +123,11 @@
             android:autofillHints="@string/confirm_passw"
             android:backgroundTint="@color/grey"
             android:ems="10"
+            android:hint="@string/confirm_passw"
             android:inputType="textPassword"
             android:textColor="@color/grey"
-            android:hint="@string/confirm_passw"
             android:textColorHint="@color/grey"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sign_up_password" />
 

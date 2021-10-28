@@ -1,32 +1,39 @@
 package com.hfad.bikeexchange.models;
 
-import com.hfad.bikeexchange.R;
-
 public class Bike {
-    private String name;
-    private String category;
-    private int imageResourceId;
 
-    public static final Bike[] bikes = {
-            new Bike("Bianchi Oltre XR4", "road", R.drawable.bianchi_oltre_xr4),
-            new Bike("Trek Madone", "road", R.drawable.trek_madone),
-            new Bike("Cannondale SS Hi-Mod", "road", R.drawable.cannondale_supersix_himod),
-            new Bike("Trek Emonda", "road", R.drawable.trek_emonda),
-            new Bike("Pinarello Dogma F12", "road", R.drawable.pinarello_dogma_f12),
-            new Bike("Felt", "road", R.drawable.felt)
-    };
+    private String frame, image;
+    private Double price;
 
-    private Bike(String name, String category, int imageResourceId) {
-        this.name = name;
-        this.category = category;
-        this.imageResourceId = imageResourceId;
+    public Bike() { }
+
+    public Bike(String frame, String image, Double price) {
+        this.frame = frame;
+        this.image = image;
+        this.price = price;
     }
 
-    public String getName() {
-        return name;
+    public String getFrame() {
+        return frame;
     }
-    public String getCategory() { return category; }
-    public int getImageResourceId() {
-        return imageResourceId;
+
+    public void setFrame(String frame) {
+        this.frame = frame;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public Double getPrice() {
+        return price;
+    }
+
+    public void setPrice(Double price) {
+        this.price = price;
     }
 }

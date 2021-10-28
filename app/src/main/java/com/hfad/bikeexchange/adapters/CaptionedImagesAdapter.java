@@ -1,78 +1,64 @@
 package com.hfad.bikeexchange.adapters;
 
-import android.graphics.drawable.Drawable;
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.cardview.widget.CardView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 import com.hfad.bikeexchange.R;
+import com.hfad.bikeexchange.models.Bike;
+
+import java.util.ArrayList;
 
 public class CaptionedImagesAdapter extends
-    RecyclerView.Adapter<CaptionedImagesAdapter.ViewHolder> {
+        RecyclerView.Adapter<CaptionedImagesAdapter.ViewHolder> {
 
-    private String[] captions;
-    private int[] imageIds;
-    private Listener listener;
+    private final ArrayList<Bike> bikesList;
+    private final Context mContext;
 
-    public CaptionedImagesAdapter (String[] captions, int[] imageIds) {
-        this.captions = captions;
-        this.imageIds = imageIds;
+    public CaptionedImagesAdapter(Context mContext, ArrayList<Bike> bikesList) {
+        this.mContext = mContext;
+        this.bikesList = bikesList;
     }
 
-    public interface Listener {
-        void onClick(int position);
+    @NonNull
+    @Override
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(mContext).inflate(R.layout.card_view, parent, false);
+        return new ViewHolder(view);
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {    // define the view
-        private CardView cardView;                                      // in RecyclerView
+    @Override
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+        // TextView
+        holder.textView.setText(bikesList.get(position).getFrame());
 
-        public ViewHolder (CardView view) {
-            super(view);
-            cardView = view;
-        }
+        //ImageView : Glide Library
+        Glide.with(mContext).load(bikesList.get(position).getImage())
+                .into(holder.cardView);
     }
 
     @Override
     public int getItemCount() {
-        return captions.length;
+        return bikesList.size();
     }
 
-    public void setListener(Listener listener) {
-        this.listener = listener;
-    }
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+        // Widget
+        private final ImageView cardView;
+        private final TextView textView;
 
-    @Override
-    public CaptionedImagesAdapter.ViewHolder onCreateViewHolder(
-            ViewGroup parent, int viewType) {       // first par: parent object
-        CardView cv = (CardView) LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.card_captioned_image, parent, false);
-        return new ViewHolder(cv);
-    }
+        public ViewHolder(@NonNull View itemView) {
+            super(itemView);
 
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        CardView cardView = holder.cardView;
-        ImageView imageView = (ImageView) cardView.findViewById(R.id.info_image);
-        Drawable drawable =
-                ContextCompat.getDrawable(cardView.getContext(), imageIds[position]);
-        imageView.setImageDrawable(drawable);
-        imageView.setContentDescription(captions[position]);
-
-        TextView textView = (TextView) cardView.findViewById(R.id.info_text);
-        textView.setText(captions[position]);
-
-        cardView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (listener != null) {
-                    listener.onClick(position);
-                }
-            }
-        });
+            cardView = itemView.findViewById(R.id.card_image);
+            textView = itemView.findViewById(R.id.card_text);
+        }
     }
 }
