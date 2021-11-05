@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -28,6 +27,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.hfad.bikeexchange.models.Customer;
 
+import java.util.Objects;
+
 public class SignUpFragment extends Fragment {
 
     public SignUpFragment() { }
@@ -36,16 +37,14 @@ public class SignUpFragment extends Fragment {
     private FrameLayout parentFrameLayout;
     private EditText email, password, confirmPassword, firstName, secondName;
     private ImageButton closeBtn;
-    private ProgressBar progressBar;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
-    private String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+.[a-z]+";
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sign_up, container, false);
-        parentFrameLayout = getActivity().findViewById(R.id.register_frameLayout);
+        parentFrameLayout = requireActivity().findViewById(R.id.register_frameLayout);
 
         alreadyHaveAnAccount = view.findViewById(R.id.button_sign_in);
 
@@ -58,8 +57,6 @@ public class SignUpFragment extends Fragment {
 
         closeBtn = view.findViewById(R.id.sign_up_close_button);
         signUpBtn = view.findViewById(R.id.button_sign_up);
-
-        progressBar = view.findViewById(R.id.sign_up_progressBar);
 
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -141,7 +138,7 @@ public class SignUpFragment extends Fragment {
     }
 
     private void setFragment(Fragment fragment) {
-        FragmentTransaction fragmentTransaction = getActivity()
+        FragmentTransaction fragmentTransaction = requireActivity()
                 .getSupportFragmentManager()
                 .beginTransaction();
 
@@ -161,6 +158,8 @@ public class SignUpFragment extends Fragment {
     }
 
     private void checkEmailAndPassword() {
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+.[a-z]+";
+
         if (email.getText().toString().matches(emailPattern) &&
                 password.getText().toString().equals(confirmPassword.getText().toString())) {
 
@@ -212,13 +211,13 @@ public class SignUpFragment extends Fragment {
     }
 
     private void showError(Task task) {
-        String error = task.getException().toString();
+        String error = Objects.requireNonNull(task.getException()).toString();
         Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
     }
 
     private void CreateMainActivityIntent() {
         Intent mainIntent = new Intent(getActivity(), MainActivity.class);
         startActivity(mainIntent);
-        getActivity().finish();
+        requireActivity().finish();
     }
 }

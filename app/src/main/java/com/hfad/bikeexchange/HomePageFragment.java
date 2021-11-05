@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.CallSuper;
 import androidx.fragment.app.Fragment;
 
 public class HomePageFragment extends Fragment {
@@ -19,11 +20,11 @@ public class HomePageFragment extends Fragment {
                 false);
     }
 
-    @Override
+    @CallSuper
     public void onStart() {
         super.onStart();
     }
-    @Override
+    @CallSuper
     public void onStop() {
         super.onStop();
     }

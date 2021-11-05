@@ -63,30 +63,86 @@ public class CategoriesFragment extends Fragment {
         ClearAll();
 
         // Get data
-        getDataFromFirebase();
+        getCategoriesFromFirebase();
 
         return recyclerView;
     }
 
-    private void getDataFromFirebase() {
-        Query query = dbRef.child("road");
+    private void getCategoriesFromFirebase() {
+        Query queryHard = dbRef.child("hardtail").child("obj1");
+        Query queryRoad = dbRef.child("road").child("obj5");
+        Query querySuspension = dbRef.child("suspension").child("obj10");
+        Query queryTimetrial = dbRef.child("timetrial").child("obj13");
 
-        query.addValueEventListener(new ValueEventListener() {
+        queryRoad.addValueEventListener(new ValueEventListener() {
             @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                ClearAll();
+                //ClearAll();
 
-                for (DataSnapshot snapshot : dataSnapshot.getChildren()){
-                    Bike bike = new Bike();
-                    bike.setFrame(Objects.requireNonNull(snapshot.child("frame").getValue()).toString());
-                    bike.setImage(Objects.requireNonNull(snapshot.child("image").getValue()).toString());
+                Bike roadBike = new Bike();
+                roadBike.setImage(Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString());
+                roadBike.setCategory(Objects.requireNonNull(dataSnapshot.child("category").getValue()).toString());
 
-                    bikesList.add(bike);
-                }
+                bikesList.add(roadBike);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w(TAG, "loadPost: onCancelled road bikes query", error.toException());
+            }
+        });
+
+        queryHard.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataSetChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                Bike hardBike = new Bike();
+                hardBike.setImage(Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString());
+                hardBike.setCategory(Objects.requireNonNull(dataSnapshot.child("category").getValue()).toString());
+
+                bikesList.add(hardBike);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w(TAG, "loadPost: onCancelled", error.toException());
+            }
+        });
+
+        querySuspension.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                Bike suspensionBike = new Bike();
+                suspensionBike.setImage(Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString());
+                suspensionBike.setCategory(Objects.requireNonNull(dataSnapshot.child("category").getValue()).toString());
+
+                bikesList.add(suspensionBike);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.w(TAG, "loadPost: onCancelled", error.toException());
+            }
+        });
+
+        queryTimetrial.addValueEventListener(new ValueEventListener() {
+            @SuppressLint("NotifyDataChanged")
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+
+                Bike timetrialBike = new Bike();
+                timetrialBike.setImage(Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString());
+                timetrialBike.setCategory(Objects.requireNonNull(dataSnapshot.child("category").getValue()).toString());
+
+                bikesList.add(timetrialBike);
+
                 captionedImagesAdapter = new CaptionedImagesAdapter(getContext(), bikesList);
                 recyclerView.setAdapter(captionedImagesAdapter);
-                captionedImagesAdapter.notifyDataSetChanged();
+                //captionedImagesAdapter.notifyDataSetChanged();
             }
 
             @Override

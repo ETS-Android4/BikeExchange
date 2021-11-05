@@ -37,7 +37,7 @@ public class CaptionedImagesAdapter extends
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         // TextView
-        holder.textView.setText(bikesList.get(position).getFrame());
+        holder.textView.setText(bikesList.get(position).getCategory());
 
         //ImageView : Glide Library
         Glide.with(mContext).load(bikesList.get(position).getImage())
