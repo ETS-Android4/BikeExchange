@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 
 import androidx.annotation.CallSuper;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 public class HomePageFragment extends Fragment {
 
@@ -18,6 +20,10 @@ public class HomePageFragment extends Fragment {
                 R.layout.fragment_home_page,
                 container,
                 false);
+    }
+
+    private void setFragment(Fragment fragment) {
+/*        FragmentManager fragmentManager = getFragmentManager()*/
     }
 
     @CallSuper
