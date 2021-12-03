@@ -10,14 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.FragmentManager;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -34,7 +33,6 @@ public class SignUpFragment extends Fragment {
     public SignUpFragment() { }
 
     private Button alreadyHaveAnAccount, signUpBtn;
-    private FrameLayout parentFrameLayout;
     private EditText email, password, confirmPassword, firstName, secondName;
     private ImageButton closeBtn;
     private FirebaseAuth firebaseAuth;
@@ -44,7 +42,6 @@ public class SignUpFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sign_up, container, false);
-        parentFrameLayout = requireActivity().findViewById(R.id.register_frameLayout);
 
         alreadyHaveAnAccount = view.findViewById(R.id.button_sign_in);
 
@@ -55,7 +52,7 @@ public class SignUpFragment extends Fragment {
         password = view.findViewById(R.id.sign_up_password);
         confirmPassword = view.findViewById(R.id.sign_up_confirm_password);
 
-        closeBtn = view.findViewById(R.id.sign_up_close_button);
+        closeBtn = view.findViewById(R.id.sign_up_close);
         signUpBtn = view.findViewById(R.id.button_sign_up);
 
         firebaseAuth = FirebaseAuth.getInstance();
@@ -138,13 +135,8 @@ public class SignUpFragment extends Fragment {
     }
 
     private void setFragment(Fragment fragment) {
-        FragmentTransaction fragmentTransaction = requireActivity()
-                .getSupportFragmentManager()
-                .beginTransaction();
-
-        fragmentTransaction.setCustomAnimations(R.anim.slide_from_left, R.anim.slideout_from_right);
-        fragmentTransaction.replace(parentFrameLayout.getId(), fragment);
-        fragmentTransaction.commit();
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.register_frameLayout, fragment).commit();
     }
 
     private void checkInputs() {
@@ -158,7 +150,8 @@ public class SignUpFragment extends Fragment {
     }
 
     private void checkEmailAndPassword() {
-        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+.[a-z]+";
+        // email regular expression
+        String emailPattern = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
 
         if (email.getText().toString().matches(emailPattern) &&
                 password.getText().toString().equals(confirmPassword.getText().toString())) {

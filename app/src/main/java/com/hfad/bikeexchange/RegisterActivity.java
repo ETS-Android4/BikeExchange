@@ -2,15 +2,13 @@ package com.hfad.bikeexchange;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+import androidx.fragment.app.FragmentManager;
 
 import android.os.Bundle;
 import android.view.KeyEvent;
-import android.widget.FrameLayout;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    private FrameLayout frameLayout;
     public static boolean onResetPasswordFragment = false;
 
     @Override
@@ -18,7 +16,6 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        frameLayout = findViewById(R.id.register_frameLayout);
         setFragment(new SignInFragment());
     }
 
@@ -33,8 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void setFragment(Fragment fragment) {
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(frameLayout.getId(), fragment);
-        fragmentTransaction.commit();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.register_frameLayout, fragment).commit();
     }
 }

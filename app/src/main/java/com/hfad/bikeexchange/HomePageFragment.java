@@ -7,8 +7,6 @@ import android.view.ViewGroup;
 
 import androidx.annotation.CallSuper;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
 public class HomePageFragment extends Fragment {
 
@@ -22,9 +20,13 @@ public class HomePageFragment extends Fragment {
                 false);
     }
 
-    private void setFragment(Fragment fragment) {
-/*        FragmentManager fragmentManager = getFragmentManager()*/
-    }
+    /*@Override
+    public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
+        Fragment childFragment = new CategoriesFragment();
+        FragmentTransaction fragmentTransaction =
+                getChildFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.child_fragment, childFragment);
+    }*/
 
     @CallSuper
     public void onStart() {

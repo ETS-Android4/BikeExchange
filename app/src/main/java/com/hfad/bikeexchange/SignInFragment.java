@@ -52,7 +52,7 @@ public class SignInFragment extends Fragment {
         email = view.findViewById(R.id.sign_in_email);
         password = view.findViewById(R.id.sign_in_password);
 
-        closeButton = view.findViewById(R.id.sign_in_close_button);
+        closeButton = view.findViewById(R.id.sign_in_close);
         signInButton = view.findViewById(R.id.button_sign_in);
         forgotPassword = view.findViewById(R.id.forgot_passw_textView);
         progressBar = view.findViewById(R.id.sign_in_progressBar);

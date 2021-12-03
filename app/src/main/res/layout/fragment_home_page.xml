@@ -7,7 +7,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
+    <!--<LinearLayout
+        android:id="@+id/parent_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
@@ -18,44 +19,43 @@
             android:layout_height="wrap_content"
             style="@style/Widget.MaterialComponents.Button" >
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:insetRight="2dp"
-            android:text="@string/categories"
-            app:cornerRadius="10dp" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:insetRight="2dp"
+                android:text="@string/categories"
+                app:cornerRadius="10dp" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/discounts" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/discounts" />
 
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:insetLeft="2dp"
-            android:text="@string/my_shop"
-            app:cornerRadius="10dp" />
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:insetLeft="2dp"
+                android:text="@string/my_shop"
+                app:cornerRadius="10dp" />
 
-    </com.google.android.material.button.MaterialButtonToggleGroup>
+        </com.google.android.material.button.MaterialButtonToggleGroup>
 
-    <androidx.appcompat.widget.LinearLayoutCompat
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-
-        <TextView
+        <androidx.appcompat.widget.LinearLayoutCompat
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-condensed-medium"
-            android:text="@string/popular_categories"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="26sp"
-            android:textStyle="bold"
-            tools:visibility="visible" />
-    </androidx.appcompat.widget.LinearLayoutCompat>
+            android:layout_height="wrap_content" >
 
-    </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-condensed-medium"
+                android:text="@string/popular_categories"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="26sp"
+                android:textStyle="bold"
+                tools:visibility="visible" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+    </LinearLayout>-->
 
 </androidx.drawerlayout.widget.DrawerLayout>

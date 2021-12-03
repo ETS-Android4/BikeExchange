@@ -20,7 +20,7 @@
     <string name="search_icon">Search</string>
     <string name="shopping_cart">Shopping Cart</string>
     <string name="logo">Logo</string>
-    <string name="close">Close button</string>
+    <string name="close">Close</string>
     <string name="email_hint">Enter email</string>
     <string name="firstName_hint">Enter first name</string>
     <string name="secondName_hint">Enter second name</string>
@@ -37,4 +37,7 @@
     <string name="personalize_please">To personalize please sign up. Have an account? Sign In.</string>
     <string name="bike_details_description">description</string>
     <string name="popular_categories">POPULAR CATEGORIES</string>
+    <string name="register_activity">Register activity</string>
+    <string name="top_buttons_group">Top buttons_group</string>
+    <!--<string name="access_token">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</string>-->
 </resources>

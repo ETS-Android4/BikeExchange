@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,24 +13,26 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
-
+import androidx.fragment.app.FragmentManager;
 import com.google.android.material.navigation.NavigationView;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private RelativeLayout contentFrame;
+    private DrawerLayout drawer;
+    private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.activity_main);
+
         Toolbar toolbar = findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
 
-        DrawerLayout drawer = findViewById(R.id.main_activity_layout);
+        drawer = findViewById(R.id.main_activity_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this,
                 drawer,
                 toolbar,
@@ -52,52 +53,73 @@ public class MainActivity extends AppCompatActivity
 
         Button signUp = headerLay.findViewById(R.id.sign_up_nav_btn);
         signUp.setOnClickListener(v -> createRegisterActivityIntent());
+    }
 
-        contentFrame = findViewById(R.id.content_frame);
-        setFragment(new HomePageFragment());
+    @Override
+    public void onStart(){
+        super.onStart();
+
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser == null){
+            int i = 1;
+        } else {
+            int i = 2;
+        }
+
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
-        int id = menuItem.getItemId();
-
-        if (id == R.id.search_bar)
+        if (menuItem.getItemId() == android.R.id.home) {
+            drawer.openDrawer(GravityCompat.START);
             return true;
-        else if (id == R.id.cart)
-            return true;
-
+        }
         return super.onOptionsItemSelected(menuItem);
     }
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        int id = item.getItemId();
+    public boolean onNavigationItemSelected(MenuItem menuItem) {
         Fragment fragment = null;
+        int menuItemId = menuItem.getItemId();
         Intent intent = getIntent();
 
-        if (id == R.id.menu_nav_home)
-            fragment = new HomePageFragment();
-        else if (id == R.id.menu_messages)
+        if (menuItemId == R.id.menu_nav_home)
+            startActivity(intent);
+        else if (menuItemId == R.id.menu_messages)
             fragment = new MessagesFragment();
-        else if (id == R.id.menu_my_shop)
+        else if (menuItemId == R.id.menu_my_shop)
             fragment = new MyShopFragment();
-        else if (id == R.id.menu_purchases)
+        else if (menuItemId == R.id.menu_purchases)
             fragment = new PurchaseFragment();
-        else if (id == R.id.menu_categories)
+        else if (menuItemId == R.id.menu_categories)
             fragment = new CategoriesFragment();
+        else if (menuItemId == R.id.menu_sign_out){
+            FirebaseAuth.getInstance().signOut();
+            fragment = null;
+        }
 
         if (fragment != null) {
+            removeAllFragments();
             setFragment(fragment);
-            FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-            ft.replace(R.id.content_frame, fragment);
-            ft.commit();
         } else {
             startActivity(intent);
         }
 
-        DrawerLayout drawer = findViewById(R.id.main_activity_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        menuItem.setChecked(true);
+        setTitle(menuItem.getTitle());
+        drawer.closeDrawers();
+
         return true;
+    }
+
+    public void removeAllFragments(){
+        for (Fragment fragment: getSupportFragmentManager().getFragments())
+            getSupportFragmentManager().beginTransaction().remove(fragment).commit();
+    }
+
+    public void setFragment(Fragment fragment){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit();
     }
 
     @Override
@@ -114,12 +136,6 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main, menu);
         return super.onCreateOptionsMenu(menu);
-    }
-
-    private void setFragment(Fragment fragment) {
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(contentFrame.getId(), fragment);
-        fragmentTransaction.commit();
     }
 
     private void createRegisterActivityIntent() {
