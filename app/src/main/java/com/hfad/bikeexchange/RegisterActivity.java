@@ -9,24 +9,22 @@ import android.view.KeyEvent;
 
 public class RegisterActivity extends AppCompatActivity {
 
-    public static boolean onResetPasswordFragment = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        setFragment(new SignInFragment());
+        if (getIntent().getExtras().getInt("numbOfFragment") == 1)
+            setFragment(new SignInFragment());
+        else
+            setFragment(new SignUpFragment());
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
-        if (keyCode == KeyEvent.KEYCODE_BACK && onResetPasswordFragment) {
-            onResetPasswordFragment = false;
+        if (keyCode == KeyEvent.KEYCODE_BACK)
             setFragment(new SignInFragment());
-            return false;
-        }
-        return super.onKeyDown(keyCode, event);
+        return false;
     }
 
     private void setFragment(Fragment fragment) {

@@ -8,6 +8,7 @@
     <string name="my_shop">MY SHOP</string>
     <string name="purchase">PURCHASE</string>
     <string name="categories">CATEGORIES</string>
+    <string name="bike_categories">BIKE CATEGORIES</string>
     <string name="discounts">DISCOUNTS</string>
     <string name="settings">SETTINGS</string>
     <string name="sign_in">SIGN IN</string>
@@ -18,7 +19,7 @@
     <string name="search_hint">Search bike</string>
     <string name="search_button">Search</string>
     <string name="search_icon">Search</string>
-    <string name="shopping_cart">Shopping Cart</string>
+    <string name="shopping_cart">SHOPPING CART</string>
     <string name="logo">Logo</string>
     <string name="close">Close</string>
     <string name="email_hint">Enter email</string>
@@ -38,6 +39,20 @@
     <string name="bike_details_description">description</string>
     <string name="popular_categories">POPULAR CATEGORIES</string>
     <string name="register_activity">Register activity</string>
-    <string name="top_buttons_group">Top buttons_group</string>
+    <string name="top_buttons_group">Top buttons group</string>
+    <string name="to_personalize">To personalize your store, please login</string>
+    <string name="auth_buttons_group">Sign in buttons group</string>
+    <string name="add_to_cart">Add to cart</string>
+    <string name="buy_now">Buy now</string>
+    <string name="add_to_saved">Add to saved</string>
+    <string name="go_to_shopping_cart">Shopping cart</string>
+    <string name="total_cost">TOTAL COST:</string>
+    <string name="amount_of_payment">AMOUNT OF PAYMENT</string>
+    <string name="to_payment">TO PAYMENT</string>
+    <string name="delete_from_shop_cart">delete</string>
+    <string name="image_for_forgot_password_view">image for forgot password view</string>
+    <string name="inbox">INBOX</string>
+    <string name="outbox">OUTBOX</string>
+    <string name="deleted">DELETED</string>
     <!--<string name="access_token">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</string>-->
 </resources>

@@ -1,7 +1,5 @@
 package com.hfad.bikeexchange;
 
-import static com.hfad.bikeexchange.RegisterActivity.onResetPasswordFragment;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -33,7 +31,7 @@ import java.util.Objects;
 public class SignInFragment extends Fragment {
     public SignInFragment() { }
 
-    private Button dontHaveAnAccount, signInButton;
+    private Button dntHaveAnAccount, signInButton;
     private ImageView closeButton;
     private FrameLayout parentFrameLayout;
     private EditText email, password;
@@ -47,7 +45,7 @@ public class SignInFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_sign_in, container, false);
         parentFrameLayout = requireActivity().findViewById(R.id.register_frameLayout);
-        dontHaveAnAccount = view.findViewById(R.id.button_sign_up);
+        dntHaveAnAccount = view.findViewById(R.id.button_sign_up);
 
         email = view.findViewById(R.id.sign_in_email);
         password = view.findViewById(R.id.sign_in_password);
@@ -103,7 +101,6 @@ public class SignInFragment extends Fragment {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onResetPasswordFragment = true;
                 setFragment(new ResetPasswordFragment()); }
         });
 
@@ -112,7 +109,7 @@ public class SignInFragment extends Fragment {
             public void onClick(View v) { CheckEmailAndPassword(); }
         });
 
-        dontHaveAnAccount.setOnClickListener(new View.OnClickListener() {
+        dntHaveAnAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) { setFragment(new SignUpFragment()); }
         });
@@ -142,7 +139,7 @@ public class SignInFragment extends Fragment {
     }
 
     private void CheckEmailAndPassword() {
-        final String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+.[a-z]+";
+        final String emailPattern = "^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$";
 
         if (email.getText().toString().matches(emailPattern) &&
                 password.length() >= 8) {
@@ -160,9 +157,9 @@ public class SignInFragment extends Fragment {
                                 startActivity(mainIntent);
                                 requireActivity().finish();
                             } else {
-                                showError(task);
                                 progressBar.setVisibility(View.INVISIBLE);
                                 BtnSignInEnable();
+                                Toast.makeText(getActivity(), "User doesn't exist", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -178,11 +175,6 @@ public class SignInFragment extends Fragment {
     private void BtnSignInDisable() {
         signInButton.setEnabled(false);
         signInButton.setTextColor(getResources().getColor(R.color.design_default_color_error));
-    }
-
-    private void showError(Task task) {
-        String error = Objects.requireNonNull(task.getException()).getMessage();
-        Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
     }
 
     private void CreateMainActivityIntent() {

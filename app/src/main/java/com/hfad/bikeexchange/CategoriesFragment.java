@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,25 +19,24 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-import com.hfad.bikeexchange.adapters.CaptionedImagesAdapter;
+import com.hfad.bikeexchange.adapters.CategoriesImagesAdapter;
 import com.hfad.bikeexchange.models.Bike;
 
 import java.util.ArrayList;
 import java.util.Objects;
 
 public class CategoriesFragment extends Fragment {
-
     private static final String TAG = "load error";
 
     // Widget
-    RecyclerView recyclerView;
+    private RecyclerView recyclerView;
 
     // Firebase
     private DatabaseReference dbRef;
 
     // Variables
     private ArrayList<Bike> bikesList;
-    private CaptionedImagesAdapter captionedImagesAdapter;
+    private CategoriesImagesAdapter categoriesImagesAdapter;
 
     @NonNull
     @Override
@@ -69,20 +69,17 @@ public class CategoriesFragment extends Fragment {
     }
 
     private void getCategoriesFromFirebase() {
-        Query queryHard = dbRef.child("hardtail").child("obj1");
-        Query queryRoad = dbRef.child("road").child("obj5");
-        Query querySuspension = dbRef.child("suspension").child("obj10");
-        Query queryTimetrial = dbRef.child("timetrial").child("obj13");
+        Query queryRoad = dbRef.child("bikes").child("obj4");
+        Query queryHard = dbRef.child("bikes").child("obj1");
+        Query querySuspension = dbRef.child("bikes").child("obj10");
+        Query queryTimetrial = dbRef.child("bikes").child("obj13");
 
         queryRoad.addValueEventListener(new ValueEventListener() {
-            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                //ClearAll();
-
                 Bike roadBike = new Bike();
-                roadBike.setImage(Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString());
-                roadBike.setCategory(Objects.requireNonNull(dataSnapshot.child("category").getValue()).toString());
+                roadBike.setImage(Objects.requireNonNull(dataSnapshot.child("image").getValue(String.class)));
+                roadBike.setCategory(Objects.requireNonNull(dataSnapshot.child("category").getValue(String.class)));
 
                 bikesList.add(roadBike);
             }
@@ -94,13 +91,11 @@ public class CategoriesFragment extends Fragment {
         });
 
         queryHard.addValueEventListener(new ValueEventListener() {
-            @SuppressLint("NotifyDataSetChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 Bike hardBike = new Bike();
-                hardBike.setImage(Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString());
-                hardBike.setCategory(Objects.requireNonNull(dataSnapshot.child("category").getValue()).toString());
+                hardBike.setImage(Objects.requireNonNull(dataSnapshot.child("image").getValue(String.class)));
+                hardBike.setCategory(Objects.requireNonNull(dataSnapshot.child("category").getValue(String.class)));
 
                 bikesList.add(hardBike);
             }
@@ -115,10 +110,9 @@ public class CategoriesFragment extends Fragment {
             @SuppressLint("NotifyDataChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 Bike suspensionBike = new Bike();
-                suspensionBike.setImage(Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString());
-                suspensionBike.setCategory(Objects.requireNonNull(dataSnapshot.child("category").getValue()).toString());
+                suspensionBike.setImage(Objects.requireNonNull(dataSnapshot.child("image").getValue(String.class)));
+                suspensionBike.setCategory(Objects.requireNonNull(dataSnapshot.child("category").getValue(String.class)));
 
                 bikesList.add(suspensionBike);
             }
@@ -133,16 +127,13 @@ public class CategoriesFragment extends Fragment {
             @SuppressLint("NotifyDataChanged")
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 Bike timetrialBike = new Bike();
-                timetrialBike.setImage(Objects.requireNonNull(dataSnapshot.child("image").getValue()).toString());
-                timetrialBike.setCategory(Objects.requireNonNull(dataSnapshot.child("category").getValue()).toString());
+                timetrialBike.setImage(Objects.requireNonNull(dataSnapshot.child("image").getValue(String.class)));
+                timetrialBike.setCategory(Objects.requireNonNull(dataSnapshot.child("category").getValue(String.class)));
 
                 bikesList.add(timetrialBike);
 
-                captionedImagesAdapter = new CaptionedImagesAdapter(getContext(), bikesList);
-                recyclerView.setAdapter(captionedImagesAdapter);
-                //captionedImagesAdapter.notifyDataSetChanged();
+                setAdapterForRecycler();
             }
 
             @Override
@@ -150,6 +141,12 @@ public class CategoriesFragment extends Fragment {
                 Log.w(TAG, "loadPost: onCancelled", error.toException());
             }
         });
+
+    }
+
+    public void setFragment(Fragment fragment) {
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -157,11 +154,16 @@ public class CategoriesFragment extends Fragment {
         if (bikesList != null){
             bikesList.clear();
 
-            if (captionedImagesAdapter != null) {
-                captionedImagesAdapter.notifyDataSetChanged();
+            if (categoriesImagesAdapter != null) {
+                categoriesImagesAdapter.notifyDataSetChanged();
             }
         }
 
         bikesList = new ArrayList<>();
+    }
+
+    private void setAdapterForRecycler() {
+        categoriesImagesAdapter = new CategoriesImagesAdapter(getContext(), bikesList);
+        recyclerView.setAdapter(categoriesImagesAdapter);
     }
 }

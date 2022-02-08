@@ -42,8 +42,8 @@ public class ResetPasswordFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_reset_password, container, false);
 
-        closeButton = view.findViewById(R.id.reset_passw_close_btn);
-        emailReset = view.findViewById(R.id.reset_password_email);
+        closeButton = view.findViewById(R.id.reset_pass_close_btn);
+        emailReset = view.findViewById(R.id.reset_pass_email);
 
         progressBar = view.findViewById(R.id.reset_password_progressBar);
         emailResetInfo = view.findViewById(R.id.email_reset_info);

@@ -7,12 +7,14 @@ import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 
-public class RequestAuth extends Fragment {
+public class DiscountsFragment extends Fragment {
+    public DiscountsFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container,
-                             Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_request_auth, container, false);
+                             Bundle savedInstanceState){
+
+        return inflater.inflate(R.layout.fragment_discounts, container, false);
     }
 }

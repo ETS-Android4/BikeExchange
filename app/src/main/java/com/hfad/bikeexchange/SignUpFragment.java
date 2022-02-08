@@ -24,12 +24,13 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.hfad.bikeexchange.models.Customer;
+import com.hfad.bikeexchange.models.User;
 
 import java.util.Objects;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignUpFragment extends Fragment {
-
     public SignUpFragment() { }
 
     private Button alreadyHaveAnAccount, signUpBtn;
@@ -37,6 +38,8 @@ public class SignUpFragment extends Fragment {
     private ImageButton closeBtn;
     private FirebaseAuth firebaseAuth;
     private FirebaseFirestore firebaseFirestore;
+    private static final Pattern VALID_EMAIL_ADDRESS_REGEX = Pattern.compile("^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$",
+            Pattern.CASE_INSENSITIVE);
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -150,10 +153,7 @@ public class SignUpFragment extends Fragment {
     }
 
     private void checkEmailAndPassword() {
-        // email regular expression
-        String emailPattern = "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|\"(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*\")@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])";
-
-        if (email.getText().toString().matches(emailPattern) &&
+        if (validateEmailAddress(email.getText().toString()) &&
                 password.getText().toString().equals(confirmPassword.getText().toString())) {
 
             BtnSignUpDisable();
@@ -164,7 +164,7 @@ public class SignUpFragment extends Fragment {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                Customer customer = new Customer(
+                                User customer = new User(
                                         email.getText().toString(),
                                         firstName.getText().toString(),
                                         secondName.getText().toString());
@@ -178,13 +178,13 @@ public class SignUpFragment extends Fragment {
                                                     CreateMainActivityIntent();
                                                 } else {
                                                     BtnSignUpEnable();
-                                                    showError(task);
+                                                    showAddCustomerError(task);
                                                 }
                                             }
                                         });
                             } else {
                                 BtnSignUpEnable();
-                                showError(task);
+                                showAuthError(task);
                             }
                         }
                     });
@@ -203,14 +203,24 @@ public class SignUpFragment extends Fragment {
         signUpBtn.setTextColor(getResources().getColor(R.color.design_default_color_error));
     }
 
-    private void showError(Task task) {
+    private void showAuthError(Task<AuthResult> task) {
+        String error = Objects.requireNonNull(task.getException()).toString();
+        Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
+    }
+
+    private void showAddCustomerError(Task<DocumentReference> task) {
         String error = Objects.requireNonNull(task.getException()).toString();
         Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
     }
 
     private void CreateMainActivityIntent() {
         Intent mainIntent = new Intent(getActivity(), MainActivity.class);
-        startActivity(mainIntent);
         requireActivity().finish();
+        startActivity(mainIntent);
+    }
+
+    private static boolean validateEmailAddress(String emailAddress) {
+        Matcher matcher = VALID_EMAIL_ADDRESS_REGEX.matcher(emailAddress);
+        return matcher.find();
     }
 }

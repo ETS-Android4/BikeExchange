@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/un_registered_user_fragment_container">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggle_group_button"
+            style="@style/Widget.MaterialComponents.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/top_buttons_group"
+            app:selectionRequired="true"
+            app:singleSelection="true"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/request_auth_container">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/categories_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:insetRight="2dp"
+                android:text="@string/categories"
+                app:cornerRadius="10dp"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/discount_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/discounts"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/my_shop_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:insetLeft="2dp"
+                android:text="@string/my_shop"
+                app:cornerRadius="10dp"
+                />
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <LinearLayout
+            android:id="@+id/request_auth_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toggle_group_button"
+            app:layout_constraintBottom_toTopOf="@id/popular_categories_text"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/to_personalize"
+                android:textColor="@color/teal_700"
+                android:textAlignment="center"
+                android:textStyle="bold"
+                android:textSize="28sp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButtonToggleGroup
+                    android:id="@+id/req_auth_sign_in_up_group"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:contentDescription="@string/auth_buttons_group">
+
+                    <Button
+                        android:id="@+id/sign_in_req_auth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:insetRight="2dp"
+                        android:text="@string/sign_in"
+                        app:cornerRadius="10dp"
+                        />
+
+                    <Button
+                        android:id="@+id/sign_up_req_auth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:insetLeft="2dp"
+                        android:text="@string/sign_up"
+                        app:cornerRadius="10dp"
+                        />
+
+                </com.google.android.material.button.MaterialButtonToggleGroup>
+            </LinearLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/popular_categories_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/popular_categories"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="26sp"
+            android:textStyle="bold"
+            tools:visibility="visible"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/request_auth_container"
+            app:layout_constraintBottom_toTopOf="@id/categories"
+            />
+
+        <androidx.fragment.app.FragmentContainerView
+            android:id="@+id/categories"
+            android:name="com.hfad.bikeexchange.CategoriesFragment"
+            android:layout_width="match_parent"
+            android:layout_height="480dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/popular_categories_text"
+            tools:layout="@layout/fragment_categories"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

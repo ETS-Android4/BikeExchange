@@ -2,12 +2,14 @@ package com.hfad.bikeexchange;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity
 
     private DrawerLayout drawer;
     private final FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    int SIGN_IN_FRAGMENT = 1, SIGN_UP_FRAGMENT = 2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,10 +52,37 @@ public class MainActivity extends AppCompatActivity
 
         View headerLay = navigationView.getHeaderView(0);
         Button signIn = headerLay.findViewById(R.id.sign_in_nav_btn);
-        signIn.setOnClickListener(v -> createRegisterActivityIntent());
+        signIn.setOnClickListener(v -> createRegisterActivityIntent(SIGN_IN_FRAGMENT));
 
         Button signUp = headerLay.findViewById(R.id.sign_up_nav_btn);
-        signUp.setOnClickListener(v -> createRegisterActivityIntent());
+        signUp.setOnClickListener(v -> createRegisterActivityIntent(SIGN_UP_FRAGMENT));
+
+        //checkIntents();
+    }
+
+    // for testing [ it's works ]
+    private void checkIntents() {
+        String categoryIntent;
+
+        if (getIntent().getExtras() == null)
+            categoryIntent = "empty string";
+        else {
+            categoryIntent = getIntent().getExtras().getString("category");
+            switch (categoryIntent) {
+                case "Hardtail bikes":
+                    setFragment(new HardtailCategoryFragment());
+                    break;
+                case "Road bikes":
+                    setFragment(new RoadCategoryFragment());
+                    break;
+                case "Suspension bikes":
+                    setFragment(new SuspensionCategoryFragment());
+                    break;
+                default:
+                    setFragment(new TimetrialCategoryFragment());
+                    break;
+            }
+        }
     }
 
     @Override
@@ -60,18 +90,19 @@ public class MainActivity extends AppCompatActivity
         super.onStart();
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
-        if (currentUser == null){
-            int i = 1;
-        } else {
-            int i = 2;
-        }
+        removeAllFragments();
 
+        if (currentUser == null)
+            setFragment(new UnRegisteredUsersFragment());
+        else
+            setFragment(new RegisteredUserFragment());
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
-        if (menuItem.getItemId() == android.R.id.home) {
-            drawer.openDrawer(GravityCompat.START);
+        if (menuItem.getItemId() == R.id.cart) {
+            Fragment fragment = new ShoppingCartFragment();
+            setFragment(fragment);
             return true;
         }
         return super.onOptionsItemSelected(menuItem);
@@ -81,10 +112,9 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem menuItem) {
         Fragment fragment = null;
         int menuItemId = menuItem.getItemId();
-        Intent intent = getIntent();
 
         if (menuItemId == R.id.menu_nav_home)
-            startActivity(intent);
+            onStart();
         else if (menuItemId == R.id.menu_messages)
             fragment = new MessagesFragment();
         else if (menuItemId == R.id.menu_my_shop)
@@ -93,16 +123,14 @@ public class MainActivity extends AppCompatActivity
             fragment = new PurchaseFragment();
         else if (menuItemId == R.id.menu_categories)
             fragment = new CategoriesFragment();
-        else if (menuItemId == R.id.menu_sign_out){
+        else if (menuItemId == R.id.menu_sign_out)
             FirebaseAuth.getInstance().signOut();
-            fragment = null;
-        }
 
         if (fragment != null) {
             removeAllFragments();
             setFragment(fragment);
         } else {
-            startActivity(intent);
+            onStart();
         }
 
         menuItem.setChecked(true);
@@ -119,7 +147,7 @@ public class MainActivity extends AppCompatActivity
 
     public void setFragment(Fragment fragment){
         FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.fragment_container, fragment).commit();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
     }
 
     @Override
@@ -133,16 +161,37 @@ public class MainActivity extends AppCompatActivity
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK)
+            openQuitDialog();
+        return false;
+    }
+
+    private void openQuitDialog() {
+        AlertDialog.Builder quitDialog = new AlertDialog.Builder(MainActivity.this);
+        quitDialog.setTitle("Do you want to exit from app?");
+
+        quitDialog.setPositiveButton("Yes", (dialog, which) -> MainActivity.this.finish());
+
+        quitDialog.setNegativeButton("No", (dialog, which) -> {
+            removeAllFragments();
+            onStart();
+        });
+
+        quitDialog.show();
+    }
+
+    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.toolbar_menu, menu);
         return super.onCreateOptionsMenu(menu);
     }
 
-    private void createRegisterActivityIntent() {
-        Intent registerIntent = new Intent(this, RegisterActivity.class);
-        // Fragment fragment = getFragmentManager().getFragment(R.id.si)
-        startActivity(registerIntent);
-        this.finish();
+    private void createRegisterActivityIntent(int numberOfFragment) {
+        Intent registerActivityIntent = new Intent(this, RegisterActivity.class);
+        registerActivityIntent.putExtra("numbOfFragment", numberOfFragment);
+        finish();
+        startActivity(registerActivityIntent);
     }
 }
 

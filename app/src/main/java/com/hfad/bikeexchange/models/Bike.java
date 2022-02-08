@@ -3,11 +3,11 @@ package com.hfad.bikeexchange.models;
 public class Bike {
 
     private String frame, image, category;
-    private Double price;
+    private Integer price;
 
     public Bike() { }
 
-    public Bike(String frame, String image, String category, Double price) {
+    public Bike(String frame, String image, String category, Integer price) {
         this.frame = frame;
         this.image = image;
         this.category = category;
@@ -30,11 +30,11 @@ public class Bike {
         this.image = image;
     }
 
-    public Double getPrice() {
+    public Integer getPrice() {
         return price;
     }
 
-    public void setPrice(Double price) {
+    public void setPrice(Integer price) {
         this.price = price;
     }
 
@@ -45,4 +45,5 @@ public class Bike {
     public void setCategory(String category) {
         this.category = category;
     }
+
 }

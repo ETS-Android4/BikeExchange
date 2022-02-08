@@ -21,6 +21,10 @@
             android:name=".RegisterActivity"
             android:screenOrientation="fullSensor"/>
 
+        <activity android:name=".SingleCategoryActivity"
+            android:screenOrientation="fullSensor"
+            />
+
         <activity
             android:name=".WelcomeActivity"
             android:screenOrientation="fullSensor"
@@ -33,7 +37,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".BikeDetailActivity"
+            android:name=".BikeDetailsActivity"
             android:parentActivityName=".MainActivity">
         </activity>
         <activity android:name=".MainActivity">
