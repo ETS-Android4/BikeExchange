@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".screen.menu.shop.fragment.MyShopFragment"
+    android:id="@+id/my_shop_container"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/my_shop_constraint_lay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="@string/my_shop"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintRight_toLeftOf="@+id/my_shop_close_button"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <ImageButton
+            android:id="@+id/my_shop_close_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:src="@drawable/close_button_black"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/close_button_my_shop"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="20dp"
+            android:padding="16dp"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/my_shop_button_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/my_shop_constraint_lay"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginTop="80dp"
+        >
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/my_shop_material_button_toggle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginStart="70dp"
+            android:layout_marginEnd="70dp"
+            app:singleSelection="true"
+            app:selectionRequired="true"
+            android:theme="@style/MaterialAlertDialog.MaterialComponents.Title.Panel.CenterStacked"
+            android:orientation="vertical"
+            style="?attr/materialButtonOutlinedStyle"
+
+            >
+
+            <Button
+                android:id="@+id/tracking_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/tracking_button"
+                app:cornerRadius="10dp"
+
+                />
+
+            <Button
+                android:id="@+id/saved_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/saved_button"
+                app:cornerRadius="10dp"
+
+                />
+
+            <Button
+                android:id="@+id/buy_again_button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/buy_again_button"
+                app:cornerRadius="10dp"
+
+                />
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

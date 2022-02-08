@@ -3,24 +3,100 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/drawable/close_button_black.xml" value="0.158" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/drawable/ic_baseline_close_24.xml" value="0.158" />
         <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/activity_bike_detail.xml" value="0.264" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/activity_item_detail.xml" value="0.25" />
         <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/activity_register.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/activity_shopping_cart.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/activity_single_category.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/activity_welcome.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/card_view.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/categ_disc_myshop_button_group.xml" value="0.24615384615384617" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/categories_card_view.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/category_card_view.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_active_orders.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_bike_detail.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_bike_details.xml" value="0.25" />
         <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_buttons_group.xml" value="0.25" />
         <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_categories.xml" value="0.2" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_checkout.xml" value="0.24615384615384617" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_completed_orders.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_deleted.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_discounts.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_for_unregistered_users.xml" value="0.25" />
         <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_home_page.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_messages.xml" value="0.264" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_inbox.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_messages.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_my_shop.xml" value="0.25" />
         <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_nav_host.xml" value="0.264" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_outbox.xml" value="0.125" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_payment.xml" value="0.24615384615384617" />
         <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_popular_categories_text.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_registered_user.xml" value="0.25" />
         <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_request_auth.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_reset_password.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_shopping_cart.xml" value="0.24615384615384617" />
         <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_sign_in.xml" value="0.25" />
-        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_sign_up.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_sign_up.xml" value="0.24615384615384617" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_slider_messages.xml" value="0.25" />
         <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_top_home.xml" value="0.264" />
         <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_top_part_home_page.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_tracking.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/fragment_unregistered_users.xml" value="0.24615384615384617" />
         <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/nav_header.xml" value="0.264" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/popular_categories_text.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/request_auth_container.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/shopping_cart_card_view.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/shopping_cart_recycler.xml" value="0.25" />
         <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/toolbar_main.xml" value="0.19444444444444445" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/tracking_card_view.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/cart/layout/fragment_checkout.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/cart/layout/fragment_payment.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/cart/layout/fragment_shopping_cart.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/cart/layout/shopping_cart_card_view.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/cart/layout/shopping_cart_recycler.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/category/layout/activity_single_category.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/category/layout/fragment_bike_details.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/home/layout/activity_main.xml" value="0.24351851851851852" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/home/layout/categories_card_view.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/home/layout/fragment_categories.xml" value="0.23325635103926096" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/home/layout/fragment_registered_user.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/home/layout/fragment_unregistered_users.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/menu/discount/layout/activity_discounted_item.xml" value="0.1" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/menu/discount/layout/activity_discounted_item_details.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/menu/discount/layout/discounts_card_view.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/menu/discount/layout/discounts_recycler.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/menu/discount/layout/fragment_discounted_item.xml" value="0.2375" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/menu/discount/layout/fragment_discounts.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/menu/layout/fragment_discounts.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/menu/message/layout/fragment_messages.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/menu/purchase/layout/fragment_purchase.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/menu/purchase/layout/fragment_purchases_recycler.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/menu/purchase/layout/purchases_card_view.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/menu/shop/layout/fragment_completed_orders.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/menu/shop/layout/fragment_my_shop.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/menu/shop/layout/fragment_purchase.xml" value="0.24351851851851852" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/menu/shop/layout/fragment_tracking.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/menu/shop/layout/tracking_card_view.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/menuheader/layout/nav_header.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/message/layout/fragment_deleted.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/message/layout/fragment_inbox.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/message/layout/fragment_messages.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/message/layout/fragment_outbox.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/navheader/layout/nav_header.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/position/layout/activity_item_detail.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/position/layout/activity_position_details.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/position/layout/fragment_position_details.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/sign/layout/activity_register.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/sign/layout/fragment_reset_password.xml" value="0.24739583333333334" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/sign/layout/fragment_sign_in.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/sign/layout/fragment_sign_up.xml" value="0.3625" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/layouts/toolbar/layout/toolbar_main.xml" value="0.3625" />
         <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/menu/main.xml" value="0.1" />
         <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/menu/menu_nav.xml" value="0.25" />
+        <entry key="..\:/Users/Huawei/Documents/AndroidStudio/BikeExchange/app/src/main/res/menu/toolbar_menu.xml" value="0.25" />
         <entry key="..\:/Users/Raman/Documents/AndroidStudio/BikeExchange/app/src/main/res/drawable/welcome_activity_background.xml" value="0.3828125" />
         <entry key="..\:/Users/Raman/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/activity_bike_detail.xml" value="0.33" />
         <entry key="..\:/Users/Raman/Documents/AndroidStudio/BikeExchange/app/src/main/res/layout/activity_main.xml" value="0.33" />

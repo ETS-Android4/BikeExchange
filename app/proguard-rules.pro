@@ -21,7 +21,7 @@
 #-renamesourcefileattribute SourceFile
 -keepattributes Signature
 
--keepclassmembers class com.hfad.bikeexchange.models.Bike {
-    getFrame();
+-keepclassmembers class com.hfad.bikeexchange.models.Item {
+    getName();
     getImage();
  }

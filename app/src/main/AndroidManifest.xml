@@ -1,43 +1,59 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+<manifest
+    xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.hfad.bikeexchange">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/bike_exchange_logo_mini"
         android:logo="@drawable/bike_exchange_logo_mini_2"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/bike_exchange_logo_mini"
         android:supportsRtl="true"
         android:theme="@style/Theme.BikeExchange"
         android:fullBackupOnly="true"
-        android:allowBackup="true">
+        android:allowBackup="true" >
 
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-8953140986335556~8008525640"/>
+            android:value="ca-app-pub-8953140986335556~8008525640"
+            />
 
         <activity
-            android:name=".RegisterActivity"
-            android:screenOrientation="fullSensor"/>
+            android:name=".screen.sign.RegisterActivity"
+            android:screenOrientation="fullSensor"
+            />
+
+        <activity android:name=".screen.category.CategoryActivity"
+            android:screenOrientation="fullSensor"
+            />
 
         <activity
-            android:name=".WelcomeActivity"
+            android:name=".screen.welcome.WelcomeActivity"
             android:screenOrientation="fullSensor"
             android:theme="@style/WelcomeTheme"
-            android:exported="true">
+            android:exported="true"
+            android:label="@string/bike_exchange" >
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".screen.home.MainActivity"
+            />
+
         <activity
-            android:name=".BikeDetailActivity"
-            android:parentActivityName=".MainActivity">
-        </activity>
-        <activity android:name=".MainActivity">
-        </activity>
+            android:name=".screen.item.ItemDetailsActivity"
+            android:parentActivityName=".screen.home.MainActivity"
+            />
+
+        <activity
+            android:name=".screen.menu.discount.DiscountedItemActivity"
+            android:parentActivityName=".screen.home.MainActivity"
+            />
 
     </application>
 </manifest>

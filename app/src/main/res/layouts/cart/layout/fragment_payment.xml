@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/black"
+    android:id="@+id/payment_fragment_content_frame"
+    android:orientation="vertical">
+
+    <com.fevziomurtekin.payview.Payview
+        android:id="@+id/payment_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="top"
+        app:cardAnimationType="vertical"
+        app:cardBgColor="@android:color/black"
+        app:cardCvErrorText="You must enter 3-digit characters"
+        app:cardCvTextSize="14"
+        app:cardExpiredErrorText="Your card has expired. Please enter the usage date correctly."
+        app:cardFgColor="@android:color/white"
+        app:cardMonthErrorText="You must enter 2-digit characters and you'll enter to number the most digit-value is '12'"
+        app:cardMonthTextSize="13"
+        app:cardNameHelperText="Enter to card name. Max 25 characters."
+        app:cardNameTextSize="15"
+        app:cardNoTextSize="14"
+        app:cardNumberHelperText="You must enter your 16-digit card number."
+        app:cardTextColor="@color/black"
+        app:cardYearErrorText="You must enter 2-digit characters and you'll enter to number the most digit-value is '99'"
+        app:cardYearTextSize="13" />
+
+    <LinearLayout
+        android:id="@+id/for_payment_lin_layout"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:orientation="horizontal"
+        android:layout_gravity="bottom"
+        android:background="@color/white"
+        >
+
+        <TextView
+            android:id="@+id/total_cost_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/for_payment"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/total_cost_payment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="@string/to_payment"
+            android:layout_marginStart="10dp"
+            />
+
+    </LinearLayout>
+</FrameLayout>
