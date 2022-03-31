@@ -6,3 +6,5 @@ Android bike shop application
 
 git clone git@github.com:rkaznouski/BikeExchange.git
 
+## Configuration
+### Keystores
