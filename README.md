@@ -2,5 +2,6 @@
 
 Android bike shop application
 
-## Getting started
+## Installation
 
+git clone git@github.com:wolox/<reponame>.git
