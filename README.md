@@ -1,4 +1,6 @@
 # Bike Exchange
 
-Bikes and bike components store
+Android bike shop application
+
+## Getting started
 
