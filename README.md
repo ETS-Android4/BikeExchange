@@ -12,6 +12,7 @@ Android bike shop application
 Project is created with:
 * Firebase Authentication
 * Firebase Realtime Database
+* Firebase StorageUI
 * Glide
 
 ## Installation
