@@ -16,7 +16,7 @@ Project is created with:
 * Glide
 
 ## Installation
-git clone git@github.com:rkaznouski/BikeExchange.git
+git@github.com:rkaznouski/BikeExchange.git
 
 ## Configuration
 ### Keystores
