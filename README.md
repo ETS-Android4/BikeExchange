@@ -4,6 +4,7 @@
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Installation](#setup)
+* [Maintainers](#maintainers)
 
 ## General info
 Android bike shop application
