@@ -26,7 +26,7 @@ This project is mantained by:
 * [Raman Kaznouski](http://github.com/rKaznouski)
 
 ## Releases
-* [Link](https://github.com/rkaznouski/BikeExchange/releases)
+* [Release files](https://github.com/rkaznouski/BikeExchange/releases)
 
 ## Screenshots
 [![Screenshot-23.png](https://i.postimg.cc/Ss3w7QXF/Screenshot-23.png)](https://postimg.cc/MM0PzSbd)
