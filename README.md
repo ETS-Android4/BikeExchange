@@ -25,4 +25,5 @@ This project is mantained by:
 * [Raman Kaznouski](http://github.com/rKaznouski)
 
 ## Screenshots
-![Alt text](https://firebasestorage.googleapis.com/v0/b/bikeexchange-7fd54.appspot.com/o/Screenshots%2FScreenshot%20(23).png?alt=media&token=4c1a4748-5ea1-48bf-92be-7be1c8ae6f97 "Discounts")
+![Alt text](https://firebasestorage.googleapis.com/v0/b/bikeexchange-7fd54.appspot.com/o/Screenshots%2FScreenshot%20(23).png?alt=media&token=4c1a4748-5ea1-48bf-92be-7be1c8ae6f97?raw=true "Discounts")
+
