@@ -26,3 +26,4 @@ This project is mantained by:
 
 ## Screenshots
 [![Screenshot-23.png](https://i.postimg.cc/Ss3w7QXF/Screenshot-23.png)](https://postimg.cc/MM0PzSbd)
+[![Screenshot-24.png](https://i.postimg.cc/J03PDRZQ/Screenshot-24.png)](https://postimg.cc/XBJwtS2Z)
