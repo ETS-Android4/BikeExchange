@@ -5,6 +5,7 @@
 * [Technologies](#technologies)
 * [Installation](#setup)
 * [Maintainers](#maintainers)
+* [Releases](#releases)
 * [Screenshots](#screenshots)
 
 ## General info
@@ -23,6 +24,9 @@ git clone git@github.com:rkaznouski/BikeExchange.git
 ## Maintainers
 This project is mantained by:
 * [Raman Kaznouski](http://github.com/rKaznouski)
+
+## Releases
+* [Link](https://github.com/rkaznouski/BikeExchange/releases)
 
 ## Screenshots
 [![Screenshot-23.png](https://i.postimg.cc/Ss3w7QXF/Screenshot-23.png)](https://postimg.cc/MM0PzSbd)
