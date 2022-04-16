@@ -18,5 +18,6 @@ Project is created with:
 ## Installation
 git clone git@github.com:rkaznouski/BikeExchange.git
 
-## Configuration
-### Keystores
+## Maintainers
+This project is mantained by:
+* [Raman Kaznouski](http://github.com/rKaznouski)
