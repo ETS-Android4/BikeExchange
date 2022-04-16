@@ -25,4 +25,4 @@ This project is mantained by:
 * [Raman Kaznouski](http://github.com/rKaznouski)
 
 ## Screenshots
-[![Screenshot-23.png](https://postimg.cc/gallery/7TGt7Zv)
+[![Screenshot-23.png](https://i.postimg.cc/Ss3w7QXF/Screenshot-23.png)](https://postimg.cc/MM0PzSbd)
